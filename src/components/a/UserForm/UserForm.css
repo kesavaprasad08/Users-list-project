@@ -1,0 +1,15 @@
+.userform{
+    align-self: center;
+    align-content: center;
+    display: flex;
+    flex-direction: column;
+    width: 700px;
+    /* align-items:flex-start; */
+    border: 1px solid black;
+    border-radius: 12px;
+    
+    
+}
+.application {
+    align-items: center;
+}
