@@ -8,14 +8,15 @@ import ErrorModal from "../UI/ErrorModal";
 const AddUser = (props) => {
   const [enteredUsername, setEnteredUsername] = useState('');
   const [enteredAge, setEnteredAge] = useState('');
+  const [enteredCollegeName, setEnteredCollegeName] = useState('');
   const[error, setError] = useState();
 
   const AddUserHandler = (event) => {
     event.preventDefault();
-    if(enteredUsername.trim().length === 0 || enteredAge.trim().length === 0){
+    if(enteredUsername.trim().length === 0 || enteredAge.trim().length === 0|| enteredCollegeName.trim().length === 0){
     setError({
       title: 'Invalid input',
-      message:'please enter a valid name and age (non-empty values).'
+      message:'please enter a valid name, age and College Name (non-empty values).'
     });
       return;
   }
@@ -26,10 +27,11 @@ const AddUser = (props) => {
     });
     return;
   }
-  props.onAddUser(enteredUsername,enteredAge);
+  props.onAddUser(enteredUsername,enteredAge,enteredCollegeName);
     
     setEnteredAge("");
     setEnteredUsername('');
+    setEnteredCollegeName('');
   };
 
   const userNameChangeHandler = (event) => {
@@ -38,6 +40,10 @@ const AddUser = (props) => {
 
   const ageChangeHandler = (event) => {
     setEnteredAge(event.target.value);
+  };
+
+  const collegeNameChangeHandler =(event) => {
+    setEnteredCollegeName(event.target.value);
   };
 
   const errorHandler =() => {
@@ -61,6 +67,13 @@ const AddUser = (props) => {
         type="number" 
         value={enteredAge} 
         onChange={ageChangeHandler} 
+        />
+        <label htmlFor="collegeName">College Name </label>
+        <input 
+        id="collegeName" 
+        type="text" 
+        value={enteredCollegeName} 
+        onChange={collegeNameChangeHandler} 
         />
         <Button type="submit">Add User</Button>
       </form>
